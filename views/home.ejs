@@ -1,0 +1,16 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Home</title>
+        <link rel="stylesheet" href="/css/styles.css">
+    </head>
+    <body>
+        <p class="text-4xl">Home</p>
+        <p>Welcome, <%= username %></p>
+
+        <form action="/auth/logout" method="post">
+            <input type="submit" name="logout" value="logout">
+        </form>
+    </body>
+</html>
