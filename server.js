@@ -13,7 +13,7 @@ const app = express();
 app.set("view engine", "ejs");
 
 app.use(express.json());
-//app.use(express.static('public'));
+app.use(express.static('public'));
 app.use(express.urlencoded({ extended: false }));
 
 app.use(session({ secret: 'SECRETKEY', resave: true, saveUnitialized: true }));
