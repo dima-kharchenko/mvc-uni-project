@@ -1,0 +1,39 @@
+<html>
+<head>
+    <title>My Expenses</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body class="text-white">
+    <%- include('./partials/header'); %>
+
+    <h1 class="text-2xl mb-4">My Expenses</h1>
+
+    <table class="w-full text-left border-collapse">
+        <thead>
+            <tr>
+                <th class="border-b">Amount</th>
+                <th class="border-b">Category</th>
+                <th class="border-b">Date</th>
+                <th class="border-b">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% expenses.forEach(exp => { %>
+                <tr>
+                    <td><%= exp.amount %></td>
+                    <td><%= exp.category %></td>
+                    <td><%= exp.date %></td>
+                    <td>
+                        <form action="/expenses/<%= exp.id %>/delete" method="post" onsubmit="return confirm('Delete this expense?')">
+                            <button type="submit" class="text-red-400">Delete</button>
+                        </form>
+                    </td>
+                </tr>
+            <% }) %>
+        </tbody>
+    </table>
+
+    <a href="/" class="block mt-4 text-blue-400">← Back</a>
+</body>
+</html>
+

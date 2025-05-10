@@ -1,18 +1,32 @@
 <html>
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Home</title>
-        <link rel="stylesheet" href="/css/styles.css">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    </head>
-    <body class="text-white">
-        <%- include('./partials/header'); %>
-        <p class="text-4xl">Home</p>
-        <p>Welcome, <%= username %></p>
-
-        <form action="/auth/logout" method="post">
-            <button type="submit" name="logout" value="logout">Logout</button>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body class="text-white">
+    <%- include('./partials/header'); %>
+    <div class="w-2/3 mx-auto mt-4 text-center">
+        <p class="text-2xl">Welcome back, <%= username %>!</p>
+        <form action="/expenses/add" method="post" class="text-black mt-4">
+            <input type="number" name="amount" required>
+            <select name="category" required>
+                <option value="">Choose category</option>
+                <option value="food">Food</option>
+                <option value="clothes">Clothes</option>
+                <option value="transport">Transport</option>
+                <option value="games">Games</option>
+                <option value="restaurants">Restaurants</option>
+            </select>
+            <input type="date" name="date" required>
+            <button type="submit" class="text-white">Add</button>
         </form>
-    </body>
+    </div>
+    <script>
+        const dateControl = document.querySelector('input[type="date"]');
+        dateControl.valueAsDate = new Date();
+    </script>
+</body>
 </html>
