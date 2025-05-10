@@ -18,13 +18,26 @@ router.post('/add', async (req, res) => {
 });
 
 router.get('/', async (req, res) => {
-    const userId = req.user.id;
     try {
+        const userId = req.user.id;
         const expenses = await Expense.findAll({
             where: { userId },
             order: [['date', 'DESC']]
         });
         res.render('expenses', { expenses });
+    } catch (err) {
+        console.error(err);
+        res.status(500).redirect("/");
+    }
+});
+
+router.post('/:id/delete', async (req, res) => {
+    const userId = req.user.id;
+    try {
+        const expense = await Expense.findOne({ where: { id: req.params.id, userId } });
+        if (!expense) return res.status(403).send("Forbidden");
+        await expense.destroy();
+        res.redirect('/expenses');
     } catch (err) {
         console.error(err);
         res.status(500).send('Something went wrong');
