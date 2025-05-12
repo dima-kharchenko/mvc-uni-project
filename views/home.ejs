@@ -28,7 +28,7 @@
                             <td><%= exp.date %></td>
                             <td class="py-3 rounded-r-lg">
                                 <div class="flex justify-center gap-2">
-                                    <form action="/expenses/<%= exp.id %>/change" method="post" class="m-0">
+                                    <form action="/expenses/<%= exp.id %>/change" method="get" class="m-0">
                                         <button type="submit" class="text-primary-a0 hover:underline">Change</button>
                                     </form>
                                     <form action="/expenses/<%= exp.id %>/delete" method="post" onsubmit="return confirm('Delete this record?')" class="m-0">
