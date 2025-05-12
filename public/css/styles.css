@@ -1013,6 +1013,11 @@ body {
   color: rgb(165 197 237 / var(--tw-text-opacity));
 }
 
+.hover\:text-primary-a0:hover {
+  --tw-text-opacity: 1;
+  color: rgb(114 169 228 / var(--tw-text-opacity));
+}
+
 .hover\:underline:hover {
   text-decoration-line: underline;
 }

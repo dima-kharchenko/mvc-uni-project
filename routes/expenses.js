@@ -24,10 +24,10 @@ router.get('/', async (req, res) => {
             where: { userId },
             order: [['date', 'DESC']]
         });
-        res.render('expenses', { expenses })
+        res.render('expenses', { expenses, title: 'history' })
     } catch (err) {
         console.error(err)
-        res.status(500).redirect("/")
+        res.status(500).redirect('/')
     }
 })
 
@@ -52,12 +52,31 @@ router.get('/:id/change', async (req, res) => {
 })
 
 router.post('/:id/change', async (req, res) => {
-    const { amount, category, date } = req.body
-    await Expense.update(
-        { amount, category, date },
-        { where: { id: req.params.id } }
-    )
+    try {
+        const { amount, category, date } = req.body
+        await Expense.update(
+            { amount, category, date },
+            { where: { id: req.params.id } }
+        )
+    } catch (err) {
+        res.status(500)
+    }
     res.redirect('/')
+})
+
+router.get('/category/:category', async (req, res) => {
+    try {
+        const userId = req.user.id
+        const category = req.params.category
+        const expenses = await Expense.findAll({
+            where: { userId, category },
+            order: [['date', 'DESC']]
+        });
+        res.render('expenses', { expenses, title: category })
+    } catch (err) {
+        console.error(err)
+        res.status(500).redirect('/')
+    }
 })
 
 module.exports = router;
