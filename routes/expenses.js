@@ -37,7 +37,7 @@ router.post('/:id/delete', async (req, res) => {
         const expense = await Expense.findOne({ where: { id: req.params.id, userId } })
         if (!expense) return res.status(403).send("Forbidden")
         await expense.destroy()
-        res.redirect('/expenses')
+        res.redirect(req.headers.referer || '/')
     } catch (err) {
         console.error(err)
         res.status(500).send('Something went wrong')
