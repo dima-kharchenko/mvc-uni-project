@@ -75,7 +75,6 @@ router.get('/category/:category', async (req, res) => {
         });
         res.render('expenses', { expenses, title: category })
     } catch (err) {
-        console.error(err)
         res.status(500).redirect('/')
     }
 })
