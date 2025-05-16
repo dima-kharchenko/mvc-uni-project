@@ -1,0 +1,45 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Month</title>
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body class="text-white">
+    <%- include('./partials/header'); %>
+    <div class="w-2/3 mx-auto mt-4 text-center">
+        <p class="text-2xl">Expenses By Last Month</p>
+        <% if (expenses?.length > 0) { %>
+        <%- include('./partials/table', {expenses: expenses}); %>
+        <div class="flex justify-center gap-4 my-4">
+            <div class="flex">
+                <div class="bg-surface-a10 px-6 py-4 rounded-xl">
+                    <p class="text-lg">Total:</p>
+                    <p class="text-xl font-bold text-primary-a0 mt-1"><%= total %> zł</p>
+                </div>
+            </div>
+            <div class="flex">
+                <div class="bg-surface-a10 px-6 py-4 rounded-xl">
+                    <p class="text-lg mb-1">Top Category:</p>
+                    <a class="text-xl font-bold text-primary-a0" href="/expenses/category/<%= top.category %>">
+                        <%= top.category.charAt(0).toUpperCase() + top.category.slice(1) %>
+                    </a>
+                </div>
+            </div>   
+            <div class="flex">
+                <div class="bg-surface-a10 px-6 py-4 rounded-xl">
+                    <p class="text-lg"><%= top.category.charAt(0).toUpperCase() + top.category.slice(1) %>:</p>
+                    <p class="text-xl font-bold text-primary-a0 mt-1"><%= top.get("total") %> zł</p>
+                </div>
+            </div>   
+        </div>
+        <a href="/" class="text-primary-a0 hover:text-primary-a3">Go Back</a>
+        <% } else { %>
+            <p>No records</p>
+        <% } %>
+    </div>
+    
+</body>
+</html>
+

@@ -1,0 +1,29 @@
+<table class="w-full text-center border-separate border-spacing-y-2">
+    <thead>
+        <tr class="text-sm text-white uppercase tracking-wider">
+            <th class="py-2 bg-surface-a20 rounded-l-lg">Amount</th>
+            <th class="bg-surface-a20">Category</th>
+            <th class="bg-surface-a20">Date</th>
+            <th class="bg-surface-a20 rounded-r-lg">Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% expenses.forEach(exp => { %>
+            <tr class="bg-surface-a10 hover:bg-surface-a20 transition">
+                <td class="py-3 rounded-l-lg"><%= exp.amount %> zł</td>
+                <td><a href="/expenses/category/<%= exp.category %>" class="hover:text-primary-a0"><%= exp.category.charAt(0).toUpperCase() + exp.category.slice(1) %></a></td>
+                <td><%= exp.date %></td>
+                <td class="py-3 rounded-r-lg">
+                    <div class="flex justify-center gap-2">
+                        <form action="/expenses/<%= exp.id %>/change" method="get" class="m-0">
+                            <button type="submit" class="text-primary-a0 hover:underline">Change</button>
+                        </form>
+                        <form action="/expenses/<%= exp.id %>/delete" method="post" onsubmit="return confirm('Delete this record?')" class="m-0">
+                            <button type="submit" class="text-red-400 hover:underline">Delete</button>
+                        </form>
+                    </div>
+                </td>                            
+            </tr>
+        <% }) %>
+    </tbody>
+</table>

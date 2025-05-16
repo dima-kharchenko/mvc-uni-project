@@ -9,6 +9,7 @@
 <body class="text-white">
     <%- include('./partials/header'); %>
     <div class="w-2/3 mx-auto mt-4 text-center">
+<<<<<<< HEAD
         <p class="text-2xl">History</p>
         <% if (expenses?.length > 0) { %>
         <table class="w-full text-center border-separate border-spacing-y-2">
@@ -40,6 +41,12 @@
                 <% }) %>
             </tbody>
         </table>
+=======
+        <p class="text-2xl"><%= title.charAt(0).toUpperCase() + title.slice(1) %></p>
+        <% if (expenses?.length > 0) { %>
+        <%- include('./partials/table', {expenses: expenses}); %>
+        <a href="/" class="text-primary-a0 hover:text-primary-a3    0">Go Back</a>
+>>>>>>> dev
         <% } else { %>
             <p>No records</p>
         <% } %>
