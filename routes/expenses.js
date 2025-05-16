@@ -1,5 +1,6 @@
 const express = require('express')
 const Expense = require('../models/Expense')
+const { Op, fn, col } = require('sequelize')
 
 const router = express.Router()
 
@@ -73,6 +74,53 @@ router.get('/category/:category', async (req, res) => {
             order: [['date', 'DESC']]
         });
         res.render('expenses', { expenses, title: category })
+    } catch (err) {
+        console.error(err)
+        res.status(500).redirect('/')
+    }
+})
+
+router.get('/month', async (req, res) => {
+    try {
+        const userId = req.user.id
+        const now = new Date();
+        const startOfMonth = new Date(now.getFullYear(), now.getMonth(), 1);
+        const endOfMonth = new Date(now.getFullYear(), now.getMonth() + 1, 0);
+        const expenses = await Expense.findAll({
+            where: {
+                userId,
+                date: {
+                    [Op.between]: [startOfMonth, endOfMonth]
+                }
+            },
+            order: [['date', 'DESC']]
+        })
+
+        const total = await Expense.sum('amount', {
+            where: {
+                userId,
+                date: {
+                    [Op.between]: [startOfMonth, endOfMonth]
+                }
+            }
+        })
+
+        const top = await Expense.findOne({
+            attributes: [
+                'category',
+                [fn('SUM', col('amount')), 'total']
+            ],
+            where: {
+                userId,
+                date: {
+                    [Op.between]: [startOfMonth, endOfMonth]
+                }
+            },
+            group: ['category'],
+            order: [[fn('SUM', col('amount')), 'DESC']],
+        })
+
+        res.render('month', { expenses, total, top })
     } catch (err) {
         console.error(err)
         res.status(500).redirect('/')

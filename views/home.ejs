@@ -12,8 +12,8 @@
         <p class="text-2xl">Welcome back, <%= username %>!</p>
         <% if (lastExpenses.length > 0) { %>
             <%- include('./partials/table', {expenses: lastExpenses}); %>
-            
-            <a href="/expenses" class="text-primary-a0 hover:text-primary-a3    0">View whole history</a>
+            <a href="/expenses/month" class="text-primary-a0 hover:text-primary-a3">View Expenses By Month</a>
+            <a href="/expenses" class="text-primary-a0 hover:text-primary-a3 flex justify-center mt-2">View whole history</a>
         <% } else { %>
             <p>No records</p>
         <% } %>
