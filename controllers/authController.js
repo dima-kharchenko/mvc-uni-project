@@ -36,6 +36,11 @@ exports.login = passport.authenticate('local', {
         failureRedirect: '/auth/login?failed=1'
 })
 
+exports.loginView = async (req, res) => {
+    const failed = req.query.failed
+    res.render('login', { failed: failed })
+}
+
 exports.signup = async (req, res) => {
     let salt = crypto.randomBytes(16);
     crypto.pbkdf2(req.body.password, salt, 310000, 32, 'sha256', async (err, hashedPassword) => {
@@ -51,6 +56,11 @@ exports.signup = async (req, res) => {
             res.redirect('/auth/signup?failed=2')
         }
     })
+}
+
+exports.signupView = async (req, res) => {
+    const failed = req.query.failed
+    res.render('signup', { failed: failed })
 }
 
 exports.logout = async (req, res) => {
