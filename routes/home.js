@@ -1,6 +1,6 @@
 const express = require("express");
 const Expense = require('../models/Expense');
-const { Op, fn, col } = require('sequelize');
+const { Op } = require('sequelize');
 
 const router = express.Router();
 
@@ -52,8 +52,6 @@ router.get("/", async (req, res) => {
             },
         });
     }
-
-    //res.render('home', { username: req.user.username })
 });
 
 module.exports = router;
