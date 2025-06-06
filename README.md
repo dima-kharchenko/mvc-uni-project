@@ -60,7 +60,4 @@ Aplikacja została zbudowana zgodnie z wzorcem MVC (Model-View-Controller):
 
 ## 🧪 Testowy użytkownik
 
-Możesz skorzystać z poniższego konta testowego:
-
-- **Login:** `test`  
-- **Hasło:** `test`
+Po zalogowaniu na konto testowe (`test` / `test`) dostępne są przykładowe wydatki, które można przeglądać, edytować i usuwać.
