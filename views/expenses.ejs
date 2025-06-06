@@ -12,6 +12,7 @@
         <p class="text-2xl"><%= title.charAt(0).toUpperCase() + title.slice(1) %></p>
         <% if (expenses?.length > 0) { %>
         <%- include('./partials/table', {expenses: expenses}); %>
+        <% if (total) { %>
         <div class="flex justify-center my-4">
             <div class="flex">
                 <div class="bg-surface-a10 px-6 py-4 rounded-xl">
@@ -20,6 +21,7 @@
                 </div>
             </div>
         </div>
+        <% } %>
         <a href="/" class="text-primary-a0 hover:text-primary-a3    0">Go Back</a>
         <% } else { %>
             <p>No records</p>

@@ -22,7 +22,7 @@ exports.expensesView = async (req, res) => {
             where: { userId },
             order: [['date', 'DESC']]
         });
-        res.render('expenses', { expenses, title: 'history' })
+        res.render('expenses', { expenses, title: 'history', total: null })
     } catch (err) {
         console.error(err)
         res.status(500).redirect('/')
