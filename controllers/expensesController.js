@@ -70,7 +70,13 @@ exports.categoryView = async (req, res) => {
             where: { userId, category },
             order: [['date', 'DESC']]
         });
-        res.render('expenses', { expenses, title: category })
+        const total = await Expense.sum('amount', {
+            where: {
+                userId,
+                category,
+            }
+        })
+        res.render('expenses', { expenses, title: category, total })
     } catch (err) {
         res.status(500).redirect('/')
     }
