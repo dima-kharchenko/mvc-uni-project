@@ -9,44 +9,10 @@
 <body class="text-white">
     <%- include('./partials/header'); %>
     <div class="w-2/3 mx-auto mt-4 text-center">
-<<<<<<< HEAD
-        <p class="text-2xl">History</p>
-        <% if (expenses?.length > 0) { %>
-        <table class="w-full text-center border-separate border-spacing-y-2">
-            <thead>
-                <tr class="text-sm text-white uppercase tracking-wider">
-                    <th class="py-2 bg-surface-a20 rounded-l-lg">Amount</th>
-                    <th class="bg-surface-a20">Category</th>
-                    <th class="bg-surface-a20">Date</th>
-                    <th class="bg-surface-a20 rounded-r-lg">Actions</th>
-                </tr>
-            </thead>
-            <tbody>
-                <% expenses.forEach(exp => { %>
-                    <tr class="bg-surface-a10 hover:bg-surface-a20 transition">
-                        <td class="py-3 rounded-l-lg"><%= exp.amount %> zł</td>
-                        <td><%= exp.category %></td>
-                        <td><%= exp.date %></td>
-                        <td class="py-3 rounded-r-lg">
-                            <div class="flex justify-center gap-2">
-                                <form action="/expenses/<%= exp.id %>/change" method="get" class="m-0">
-                                    <button type="submit" class="text-primary-a0 hover:underline">Change</button>
-                                </form>
-                                <form action="/expenses/<%= exp.id %>/delete" method="post" onsubmit="return confirm('Delete this record?')" class="m-0">
-                                    <button type="submit" class="text-red-400 hover:underline">Delete</button>
-                                </form>
-                            </div>
-                        </td>                            
-                    </tr>
-                <% }) %>
-            </tbody>
-        </table>
-=======
         <p class="text-2xl"><%= title.charAt(0).toUpperCase() + title.slice(1) %></p>
         <% if (expenses?.length > 0) { %>
         <%- include('./partials/table', {expenses: expenses}); %>
         <a href="/" class="text-primary-a0 hover:text-primary-a3    0">Go Back</a>
->>>>>>> dev
         <% } else { %>
             <p>No records</p>
         <% } %>
