@@ -1,4 +1,4 @@
-# System monitorowania wydatków domowych
+# BudgetMate - System monitorowania wydatków domowych
 
 ## 📌 Opis projektu
 
@@ -14,7 +14,7 @@ Aplikacja webowa służąca do monitorowania i analizy wydatków. Została stwor
 ## 🚀 Instrukcja uruchomienia aplikacji
 
 ### Wymagania:
-- Node.js w wersji `>=18.x`
+- Node.js `>=18.x`
 - NPM lub Yarn
 
 ### Instalacja i uruchomienie:
@@ -45,16 +45,16 @@ npm start
 ## 🧩 Struktura aplikacji
 Aplikacja została zbudowana zgodnie z wzorcem MVC (Model-View-Controller):
 
-### 📁 Modele (models/)
+### 📁 Modele (`models/`)
 - `User.js` - model użytkownika zawierający pola: username, password, salt.
 - `Expense.js` - model wydatku z polami: amount, category, date, userId.
 
-### 📁 Kontrolery (controllers/)
+### 📁 Kontrolery (`controllers/`)
 - `authController.js` - obsługuje rejestrację, logowanie i wylogowywanie użytkownika.
 - `expensesController.js` - obsługuje dodawanie, edycję i usuwanie wydatków.
 - `homeController.js` - renderuje stronę główną.
 
-### 📁 Widoki (views/)
+### 📁 Widoki (`views/`)
 - `partials/` - wspólne komponenty, np. nagłówek, stopka.
 - `/` - wszystkie widoki.
 
