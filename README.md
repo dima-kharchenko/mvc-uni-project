@@ -10,6 +10,7 @@ Aplikacja webowa służąca do monitorowania i analizy wydatków. Została stwor
 - Przeglądanie listy wydatków z możliwością filtrowania i edycji.
 - Usuwanie wydatków.
 - Generowanie miesięcznych raportów z podziałem na kategorie.
+- Filtrowanie po kliknięciu na nazwę kategorii.
 
 ## 🚀 Instrukcja uruchomienia aplikacji
 
